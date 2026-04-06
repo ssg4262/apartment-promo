@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import type { Facility } from "@/types";
 
 // Fix default marker icon path issue with bundlers
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,12 +18,50 @@ interface MapProps {
   lat: number;
   lng: number;
   label?: string;
+  facilities?: Facility[];
+  activeCategory?: string;
+  categoryColors?: Record<string, string>;
 }
 
-export default function LeafletMap({ lat, lng, label = "호반써밋 경산 상방공원 1단지" }: MapProps) {
+function makePinIcon(color: string, size = 28) {
+  return L.divIcon({
+    html: `<svg viewBox="0 0 28 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:${size}px;height:${size * 34 / 28}px;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.3))">
+      <path d="M14 0C6.27 0 0 6.27 0 14c0 10.5 14 20 14 20S28 24.5 28 14C28 6.27 21.73 0 14 0z" fill="${color}"/>
+      <circle cx="14" cy="14" r="6" fill="white"/>
+    </svg>`,
+    className: "",
+    iconSize: [size, size * 34 / 28],
+    iconAnchor: [size / 2, size * 34 / 28],
+    popupAnchor: [0, -(size * 34 / 28)],
+  });
+}
+
+function makeHomeIcon() {
+  return L.divIcon({
+    html: `<svg viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:36px;height:44px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.4))">
+      <path d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 26 18 26S36 31.5 36 18C36 8.06 27.94 0 18 0z" fill="#B87348"/>
+      <circle cx="18" cy="18" r="8" fill="white"/>
+    </svg>`,
+    className: "",
+    iconSize: [36, 44],
+    iconAnchor: [18, 44],
+    popupAnchor: [0, -44],
+  });
+}
+
+export default function LeafletMap({
+  lat,
+  lng,
+  label = "호반써밋 경산 상방공원 1단지",
+  facilities = [],
+  activeCategory = "all",
+  categoryColors = {},
+}: MapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
+  const markersRef = useRef<L.Marker[]>([]);
 
+  // Initial map setup
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
@@ -37,29 +76,14 @@ export default function LeafletMap({ lat, lng, label = "호반써밋 경산 상�
       maxZoom: 19,
     }).addTo(map);
 
-    // Custom bronze marker
-    const icon = L.divIcon({
-      html: `
-        <div style="
-          width:36px;height:44px;position:relative;
-        ">
-          <svg viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-            <path d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 26 18 26S36 31.5 36 18C36 8.06 27.94 0 18 0z" fill="#B87348"/>
-            <circle cx="18" cy="18" r="8" fill="white"/>
-          </svg>
-        </div>
-      `,
-      className: "",
-      iconSize: [36, 44],
-      iconAnchor: [18, 44],
-      popupAnchor: [0, -44],
-    });
-
-    const marker = L.marker([lat, lng], { icon }).addTo(map);
-    marker.bindPopup(
-      `<div style="font-size:13px;font-weight:600;color:#222;padding:4px 2px;white-space:nowrap;">${label}</div>`,
-      { closeButton: false }
-    ).openPopup();
+    // Main project marker
+    const homeMarker = L.marker([lat, lng], { icon: makeHomeIcon() }).addTo(map);
+    homeMarker
+      .bindPopup(
+        `<div style="font-size:13px;font-weight:700;color:#B87348;padding:4px 2px;white-space:nowrap;">${label}</div>`,
+        { closeButton: false }
+      )
+      .openPopup();
 
     mapRef.current = map;
 
@@ -67,7 +91,34 @@ export default function LeafletMap({ lat, lng, label = "호반써밋 경산 상�
       map.remove();
       mapRef.current = null;
     };
-  }, [lat, lng, label]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Update facility markers when category or facilities change
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+
+    // Remove old facility markers
+    markersRef.current.forEach((m) => m.remove());
+    markersRef.current = [];
+
+    const toShow = activeCategory === "all"
+      ? facilities
+      : facilities.filter((f) => f.category === activeCategory);
+
+    toShow.forEach((f) => {
+      if (!f.lat || !f.lng) return;
+      const color = categoryColors[f.category] ?? "#6B7280";
+      const marker = L.marker([f.lat, f.lng], { icon: makePinIcon(color) }).addTo(map);
+      marker.bindPopup(
+        `<div style="font-size:12px;font-weight:600;color:#222;white-space:nowrap;">${f.name}</div>
+         <div style="font-size:11px;color:#666;margin-top:2px;">${f.distance} · ${f.time}</div>`,
+        { closeButton: false }
+      );
+      markersRef.current.push(marker);
+    });
+  }, [facilities, activeCategory, categoryColors]);
 
   return <div ref={containerRef} className="h-full w-full z-0" />;
 }

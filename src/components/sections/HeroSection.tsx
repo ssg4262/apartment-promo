@@ -47,7 +47,7 @@ export default function HeroSection() {
   const [selected, setSelected] = useState(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true }),
+    Autoplay({ delay: 8000, stopOnInteraction: false, stopOnMouseEnter: true }),
   ]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
@@ -186,7 +186,7 @@ export default function HeroSection() {
                   className="h-full bg-accent-light"
                   initial={{ width: "0%" }}
                   animate={{ width: selected === i ? "100%" : "0%" }}
-                  transition={{ duration: selected === i ? 5 : 0.3, ease: "linear" }}
+                  transition={{ duration: selected === i ? 8 : 0.3, ease: "linear" }}
                 />
               </div>
               <span className={cn(
@@ -215,8 +215,8 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* Arrows */}
-      <div className="absolute bottom-36 right-6 z-20 flex gap-px md:bottom-10 md:right-10">
+      {/* Arrows - hidden on mobile */}
+      <div className="absolute bottom-10 right-10 z-20 hidden gap-px md:flex">
         <button onClick={scrollPrev} className="border border-white/10 p-3 text-white/60 transition hover:bg-white/5 hover:text-white/80" aria-label="이전">
           <ChevronLeft size={16} strokeWidth={1} />
         </button>

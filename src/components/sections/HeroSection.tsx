@@ -14,7 +14,7 @@ const SLIDES = [
     number: "01",
     title: "경산의\n새로운 자부심",
     sub: PROJECT.name,
-    desc: "상방공원 조망, 980세대 프리미엄 대단지",
+    desc: "상방공원 조망, 1,004세대 프리미엄 대단지",
     bgStyle: {
       background: "linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #0d0d0d 100%)",
     },

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn, convertToPyeong } from "@/lib/utils";
 import { PROJECT, PROJECT_STATS, PROJECT_OVERVIEW_TABLE } from "@/data/project";
 import { UNIT_TYPES } from "@/data/unit-types";
 import SectionWrapper from "./SectionWrapper";
@@ -10,6 +10,10 @@ import AnimatedCounter from "@/components/common/AnimatedCounter";
 
 export default function OverviewSection() {
   const [activeTab, setActiveTab] = useState<"overview" | "units">("overview");
+  const [unitMode, setUnitMode] = useState<"sqm" | "pyeong">("sqm");
+
+  const fmtArea = (val: number) =>
+    unitMode === "pyeong" ? `${convertToPyeong(val)}평` : `${val}㎡`;
 
   return (
     <SectionWrapper id="overview" title="사업개요" subtitle="Overview">
@@ -73,29 +77,66 @@ export default function OverviewSection() {
         )}
 
         {activeTab === "units" && (
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[560px] text-sm">
-              <thead>
-                <tr className="border-b-2 border-neutral-900 dark:border-white">
-                  <th className="pb-3 text-left font-medium">타입</th>
-                  <th className="pb-3 text-right font-medium">전용면적</th>
-                  <th className="pb-3 text-right font-medium">공급면적</th>
-                  <th className="pb-3 text-right font-medium">계약면적</th>
-                  <th className="pb-3 text-right font-medium">세대수</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-neutral-100 dark:divide-neutral-800">
-                {UNIT_TYPES.map((unit) => (
-                  <tr key={unit.id} className="group">
-                    <td className="py-3.5 font-semibold">{unit.name}</td>
-                    <td className="py-3.5 text-right text-neutral-500">{unit.exclusiveArea}㎡</td>
-                    <td className="py-3.5 text-right text-neutral-500">{unit.supplyArea}㎡</td>
-                    <td className="py-3.5 text-right text-neutral-500">{unit.contractArea}㎡</td>
-                    <td className="py-3.5 text-right font-medium">{unit.unitCount}세대</td>
+          <div>
+            {/* Unit toggle */}
+            <div className="mb-6 flex items-center justify-end gap-2">
+              <button
+                onClick={() => setUnitMode("sqm")}
+                className={cn(
+                  "px-3 py-1.5 text-xs font-medium transition",
+                  unitMode === "sqm"
+                    ? "bg-neutral-900 text-white dark:bg-white dark:text-black"
+                    : "bg-neutral-100 text-neutral-400 dark:bg-neutral-800"
+                )}
+              >
+                ㎡
+              </button>
+              <button
+                onClick={() => setUnitMode("pyeong")}
+                className={cn(
+                  "px-3 py-1.5 text-xs font-medium transition",
+                  unitMode === "pyeong"
+                    ? "bg-neutral-900 text-white dark:bg-white dark:text-black"
+                    : "bg-neutral-100 text-neutral-400 dark:bg-neutral-800"
+                )}
+              >
+                평 (공급기준)
+              </button>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[560px] text-sm">
+                <thead>
+                  <tr className="border-b-2 border-neutral-900 dark:border-white">
+                    <th className="pb-3 text-left font-medium">타입</th>
+                    <th className="pb-3 text-right font-medium">전용면적</th>
+                    <th className="pb-3 text-right font-medium">공급면적</th>
+                    <th className="pb-3 text-right font-medium">세대수</th>
+                    <th className="pb-3 text-right font-medium">비율</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-neutral-100 dark:divide-neutral-800">
+                  {UNIT_TYPES.map((unit) => (
+                    <tr key={unit.id} className="group">
+                      <td className="py-3.5 font-semibold">{unit.name}</td>
+                      <td className="py-3.5 text-right text-neutral-500">{fmtArea(unit.exclusiveArea)}</td>
+                      <td className="py-3.5 text-right text-neutral-500">{fmtArea(unit.supplyArea)}</td>
+                      <td className="py-3.5 text-right font-medium">{unit.unitCount}세대</td>
+                      <td className="py-3.5 text-right text-neutral-400">
+                        {((unit.unitCount / 1004) * 100).toFixed(2)}%
+                      </td>
+                    </tr>
+                  ))}
+                  <tr className="border-t-2 border-neutral-900 dark:border-white font-semibold">
+                    <td className="py-3.5">계</td>
+                    <td className="py-3.5 text-right">-</td>
+                    <td className="py-3.5 text-right">-</td>
+                    <td className="py-3.5 text-right">1,004세대</td>
+                    <td className="py-3.5 text-right">100%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
       </RevealOnScroll>

@@ -5,7 +5,7 @@ export const BIRDSEYE_TABS: BirdEyeTab[] = [
     id: "perspective",
     label: "조감도",
     image: "/images/overview/perspective.jpg",
-    description: "르클래스 센트럴파크의 전체 단지 조감도",
+    description: "호반써밋 경산 상방공원 1단지 전체 조감도",
   },
   {
     id: "siteplan",

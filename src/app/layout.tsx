@@ -3,13 +3,13 @@ import Providers from "@/components/Providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "르클래스 센트럴파크 | 강남 프리미엄 아파트 분양",
+  title: "호반써밋 경산 상방공원 1단지 | 분양 안내",
   description:
-    "삼성역 도보 5분, 강남 핵심 입지의 프리미엄 아파트 르클래스 센트럴파크. 59~107㎡, 1,200세대 대단지. 관심고객 등록 접수 중.",
-  keywords: ["르클래스", "센트럴파크", "강남 아파트", "삼성역", "분양", "아파트 분양"],
+    "경산 상방공원 조망, 980세대 프리미엄 대단지 호반써밋. 59~107㎡, 호반건설 시공. 관심고객 등록 접수 중.",
+  keywords: ["호반써밋", "경산", "상방공원", "분양", "아파트 분양", "호반건설"],
   openGraph: {
-    title: "르클래스 센트럴파크 | 강남 프리미엄 아파트 분양",
-    description: "삼성역 도보 5분, 강남 핵심 입지의 프리미엄 아파트",
+    title: "호반써밋 경산 상방공원 1단지 | 분양 안내",
+    description: "경산 상방공원 조망, 980세대 프리미엄 대단지 호반써밋",
     type: "website",
     locale: "ko_KR",
   },

@@ -1,13 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import {
-  Train, GraduationCap, ShoppingBag, Heart, TreePine, MapPin, Clock,
+  Train, GraduationCap, ShoppingBag, Heart, TreePine, MapPin,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FACILITY_CATEGORIES, FACILITIES } from "@/data/facilities";
 import SectionWrapper from "./SectionWrapper";
 import RevealOnScroll from "@/components/common/RevealOnScroll";
+
+// Dynamic import to avoid SSR issues with Leaflet
+const LeafletMap = dynamic(() => import("@/components/common/KakaoMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-full w-full flex items-center justify-center bg-neutral-100">
+      <MapPin size={24} className="text-neutral-300 animate-pulse" />
+    </div>
+  ),
+});
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Train, GraduationCap, ShoppingBag, Heart, TreePine,
@@ -50,22 +61,26 @@ export default function LocationSection() {
       </RevealOnScroll>
 
       <div className="grid gap-10 lg:grid-cols-5">
-        {/* Map placeholder */}
+        {/* Real map */}
         <RevealOnScroll className="lg:col-span-3">
-          <div className="relative aspect-[4/3] bg-neutral-100 dark:bg-neutral-900">
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <MapPin size={32} strokeWidth={1} className="mb-4 text-neutral-300" />
-              <p className="font-medium text-neutral-500">경상북도 경산시 상방동</p>
-              <p className="mt-1.5 text-xs text-neutral-400">지도 API 연동 시 표시됩니다</p>
-              <div className="mt-6 flex gap-3">
-                <span className="border border-neutral-200 px-3 py-1 text-[11px] text-neutral-500 dark:border-neutral-700">
-                  상방공원 도보 1분
-                </span>
-                <span className="border border-neutral-200 px-3 py-1 text-[11px] text-neutral-500 dark:border-neutral-700">
-                  경산IC 차량 8분
-                </span>
-              </div>
-            </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-sm shadow-md">
+            <LeafletMap
+              lat={35.8249}
+              lng={128.7438}
+              label="호반써밋 경산 상방공원 1단지"
+            />
+          </div>
+          {/* Address badge */}
+          <div className="mt-3 flex flex-wrap gap-2">
+            <span className="inline-flex items-center gap-1.5 border border-neutral-200 px-3 py-1 text-[11px] text-neutral-500">
+              <MapPin size={10} /> 경상북도 경산시 상방동 71-1번지
+            </span>
+            <span className="border border-neutral-200 px-3 py-1 text-[11px] text-neutral-500">
+              상방공원 도보 1분
+            </span>
+            <span className="border border-neutral-200 px-3 py-1 text-[11px] text-neutral-500">
+              경산IC 차량 8분
+            </span>
           </div>
         </RevealOnScroll>
 

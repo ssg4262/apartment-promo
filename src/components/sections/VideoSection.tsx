@@ -52,8 +52,8 @@ export default function VideoSection({
         </div>
       </div>
 
-      {/* Video - contained width with max height */}
-      <div className="mx-auto max-w-6xl section-padding pb-10 md:pb-14">
+      {/* Full-width video */}
+      <div className="w-full">
         <video
           src={getImagePath(src)}
           poster={poster ? getImagePath(poster) : undefined}
@@ -63,8 +63,7 @@ export default function VideoSection({
           playsInline
           controls
           preload="auto"
-          className="w-full rounded-sm"
-          style={{ maxHeight: "70vh" }}
+          className="w-full"
         />
       </div>
     </section>

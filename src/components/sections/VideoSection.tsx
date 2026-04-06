@@ -53,7 +53,7 @@ export default function VideoSection({
       </div>
 
       {/* Full-width video */}
-      <div className="w-full">
+      <div className="mx-auto max-w-6xl section-padding pb-10">
         <video
           src={getImagePath(src)}
           poster={poster ? getImagePath(poster) : undefined}

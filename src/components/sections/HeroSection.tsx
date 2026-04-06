@@ -5,7 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowDown } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, getImagePath } from "@/lib/utils";
 import { PROJECT } from "@/data/project";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
@@ -15,30 +15,21 @@ const SLIDES = [
     title: "경산의\n새로운 자부심",
     sub: PROJECT.name,
     desc: "상방공원 조망, 1,004세대 프리미엄 대단지",
-    bgStyle: {
-      background: "linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #0d0d0d 100%)",
-    },
-    decorColor: "rgba(255,255,255,0.03)",
+    image: "/images/hero/hero-02.jpg",
   },
   {
     number: "02",
     title: "공원 속\n프리미엄 라이프",
     sub: "Park Premium",
     desc: "상방공원 품은 자연친화 주거단지",
-    bgStyle: {
-      background: "linear-gradient(135deg, #0d0d0d 0%, #111 50%, #0a0a0a 100%)",
-    },
-    decorColor: "rgba(255,255,255,0.02)",
+    image: "/images/hero/hero-01.jpg",
   },
   {
     number: "03",
     title: "호반써밋이\n증명하는 품격",
     sub: "Hoban Summit",
     desc: "호반건설의 프리미엄 브랜드, 써밋 시리즈",
-    bgStyle: {
-      background: "linear-gradient(135deg, #0a0a0a 0%, #151515 50%, #0a0a0a 100%)",
-    },
-    decorColor: "rgba(255,255,255,0.025)",
+    image: "/images/hero/hero-03.jpg",
   },
 ];
 
@@ -66,33 +57,15 @@ export default function HeroSection() {
       <div ref={emblaRef} className="h-full overflow-hidden">
         <div className="flex h-full">
           {SLIDES.map((slide, i) => (
-            <div key={i} className="relative h-full min-w-0 flex-[0_0_100%]" style={slide.bgStyle}>
-              {/* Geometric decoration */}
-              <div className="absolute inset-0 overflow-hidden">
-                {/* Large circle */}
-                <div
-                  className="absolute -right-[20%] top-[10%] h-[70vh] w-[70vh] rounded-full border"
-                  style={{ borderColor: slide.decorColor }}
-                />
-                {/* Small circle */}
-                <div
-                  className="absolute right-[15%] top-[25%] h-[25vh] w-[25vh] rounded-full border"
-                  style={{ borderColor: slide.decorColor }}
-                />
-                {/* Horizontal lines */}
-                <div className="absolute left-0 top-[40%] h-px w-[30%]" style={{ background: `linear-gradient(90deg, transparent, ${slide.decorColor})` }} />
-                <div className="absolute left-0 top-[42%] h-px w-[20%]" style={{ background: `linear-gradient(90deg, transparent, ${slide.decorColor})` }} />
-                {/* Vertical line right */}
-                <div className="absolute right-[30%] top-0 h-full w-px" style={{ background: `linear-gradient(180deg, transparent, ${slide.decorColor}, transparent)` }} />
-                {/* Corner frame */}
-                <div className="absolute right-[10%] bottom-[20%] h-32 w-32 border-b border-r" style={{ borderColor: slide.decorColor }} />
-                {/* Dot grid */}
-                <div className="absolute right-[8%] top-[15%] grid grid-cols-5 gap-4 opacity-30">
-                  {Array.from({ length: 25 }).map((_, j) => (
-                    <div key={j} className="h-px w-px bg-white/20 rounded-full" />
-                  ))}
-                </div>
-              </div>
+            <div key={i} className="relative h-full min-w-0 flex-[0_0_100%] bg-black">
+              {/* Background image */}
+              <img
+                src={getImagePath(slide.image)}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              {/* Dark overlay for text legibility */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
             </div>
           ))}
         </div>

@@ -52,8 +52,8 @@ export default function VideoSection({
         </div>
       </div>
 
-      {/* Full-width video */}
-      <div className="w-full">
+      {/* Video - contained width with max height */}
+      <div className="mx-auto max-w-6xl section-padding pb-10 md:pb-14">
         <video
           src={getImagePath(src)}
           poster={poster ? getImagePath(poster) : undefined}
@@ -61,8 +61,10 @@ export default function VideoSection({
           muted
           loop
           playsInline
+          controls
           preload="auto"
-          className="aspect-video w-full object-cover"
+          className="w-full rounded-sm"
+          style={{ maxHeight: "70vh" }}
         />
       </div>
     </section>

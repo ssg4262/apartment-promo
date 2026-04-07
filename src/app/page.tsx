@@ -15,6 +15,7 @@ import BirdEyeSection from "@/components/sections/BirdEyeSection";
 import FloorPlanSection from "@/components/sections/FloorPlanSection";
 import GallerySection from "@/components/sections/GallerySection";
 import LocationSection from "@/components/sections/LocationSection";
+import EnvSection from "@/components/sections/EnvSection";
 import PremiumSection from "@/components/sections/PremiumSection";
 import RegistrationSection from "@/components/sections/RegistrationSection";
 
@@ -51,6 +52,7 @@ export default function Home() {
           author="Hoban Summit"
         />
         <GallerySection />
+        <EnvSection />
         <LocationSection />
         <PremiumSection />
         <RegistrationSection />

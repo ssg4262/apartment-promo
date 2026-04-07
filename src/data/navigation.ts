@@ -4,6 +4,7 @@ export const NAV_ITEMS: NavItem[] = [
   { id: "hero", label: "HOME" },
   { id: "overview", label: "사업개요" },
   { id: "birdseye", label: "단지안내" },
+  { id: "community", label: "커뮤니티" },
   { id: "floorplan", label: "세대안내" },
   { id: "gallery", label: "갤러리" },
   { id: "environment", label: "입지분석" },

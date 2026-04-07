@@ -12,6 +12,7 @@ import VideoSection from "@/components/sections/VideoSection";
 import OverviewSection from "@/components/sections/OverviewSection";
 import DividerSection from "@/components/sections/DividerSection";
 import BirdEyeSection from "@/components/sections/BirdEyeSection";
+import CommunitySection from "@/components/sections/CommunitySection";
 import FloorPlanSection from "@/components/sections/FloorPlanSection";
 import GallerySection from "@/components/sections/GallerySection";
 import LocationSection from "@/components/sections/LocationSection";
@@ -42,6 +43,7 @@ export default function Home() {
           quote="공원이 선사하는 품격, 호반써밋이 완성합니다"
         />
         <BirdEyeSection />
+        <CommunitySection />
         <FloorPlanSection />
         <VideoSection
           id="visit-guide"

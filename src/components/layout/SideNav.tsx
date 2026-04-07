@@ -9,6 +9,7 @@ import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 const SECTIONS = [
   { id: "overview", label: "사업개요" },
   { id: "birdseye", label: "단지 안내" },
+  { id: "community", label: "커뮤니티" },
   { id: "floorplan", label: "세대 안내" },
   { id: "gallery", label: "갤러리" },
   { id: "environment", label: "입지분석" },

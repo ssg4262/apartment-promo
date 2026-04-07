@@ -9,7 +9,6 @@ import RevealOnScroll from "@/components/common/RevealOnScroll";
 import ImageZoomModal from "@/components/common/ImageZoomModal";
 
 const TABS = [
-  { id: "market-19", label: "부동산정책",     image: "/images/market/market-19.jpg" },
   { id: "market-20", label: "대구권시장",     image: "/images/market/market-20.jpg" },
   { id: "market-21", label: "분양/입주현황",  image: "/images/market/market-21.jpg" },
   { id: "market-22", label: "분양예정사례",   image: "/images/market/market-22.jpg" },

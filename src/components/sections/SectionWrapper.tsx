@@ -35,12 +35,12 @@ export default function SectionWrapper({
         {(title || subtitle) && (
           <div className="mb-16 md:mb-20">
             {subtitle && (
-              <span className="label-caps mb-4 block text-neutral-500 dark:text-neutral-400">
+              <span className={cn("label-caps mb-4 block", dark ? "text-neutral-400" : "text-neutral-500 dark:text-neutral-400")}>
                 {subtitle}
               </span>
             )}
             {title && (
-              <h2 className="heading-display text-3xl text-neutral-900 dark:text-white md:text-4xl lg:text-[2.75rem]">
+              <h2 className={cn("heading-display text-3xl md:text-4xl lg:text-[2.75rem]", dark ? "text-white" : "text-neutral-900 dark:text-white")}>
                 {title}
               </h2>
             )}

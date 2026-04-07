@@ -29,7 +29,9 @@ export function convertToPyeong(sqm: number): number {
 }
 
 export function getBasePath(): string {
-  return process.env.NODE_ENV === "production" ? "/apartment-promo" : "";
+  if (process.env.NODE_ENV !== "production") return "";
+  if (process.env.NEXT_PUBLIC_CUSTOM_DOMAIN === "true") return "";
+  return "/apartment-promo";
 }
 
 export function getImagePath(path: string): string {

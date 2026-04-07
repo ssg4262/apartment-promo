@@ -9,30 +9,12 @@ import RevealOnScroll from "@/components/common/RevealOnScroll";
 import ImageZoomModal from "@/components/common/ImageZoomModal";
 
 const TABS = [
-  {
-    id: "analysis",
-    label: "입지분석",
-    image: "/images/location/analysis.jpg",
-    title: "시청·경찰서·학군·생활편의시설이 조화된 안정적인 도심 인프라 입지",
-  },
-  {
-    id: "transport",
-    label: "교통환경",
-    image: "/images/location/transport.jpg",
-    title: "임당역(1.7km)·경산역(1.3km) 접근성과 광역도로 이용이 용이한 교통입지",
-  },
-  {
-    id: "education",
-    label: "교육환경",
-    image: "/images/location/education.jpg",
-    title: "경산초(약 400m) 배정 예정, 1.5km 내 중·고교 다수로 학군 접근성 양호",
-  },
-  {
-    id: "living",
-    label: "생활환경",
-    image: "/images/location/living.jpg",
-    title: "공원·체육시설 접근성이 양호한 도심형 생활권",
-  },
+  { id: "analysis",  label: "입지분석",       image: "/images/location/analysis.jpg"  },
+  { id: "transport", label: "교통환경",       image: "/images/location/transport.jpg" },
+  { id: "education", label: "교육환경",       image: "/images/location/education.jpg" },
+  { id: "living",    label: "생활환경",       image: "/images/location/living.jpg"    },
+  { id: "living2",   label: "녹지·공원인프라", image: "/images/location/living2.jpg"   },
+  { id: "sports",    label: "경산생활체육공원", image: "/images/location/sports.jpg"    },
 ];
 
 export default function EnvSection() {
@@ -41,7 +23,7 @@ export default function EnvSection() {
   const activeTab = TABS.find((t) => t.id === active)!;
 
   return (
-    <SectionWrapper id="environment" title="사업의 이해" subtitle="Overview">
+    <SectionWrapper id="environment" title="입지 분석" subtitle="Location Analysis">
       {/* Tabs */}
       <RevealOnScroll>
         <div className="mb-10 flex gap-8 border-b border-neutral-200">
@@ -91,7 +73,7 @@ export default function EnvSection() {
               </div>
             </div>
             <p className="mt-3 text-xs text-neutral-400">
-              * 클릭하여 확대 · {activeTab.title}
+              * 클릭하여 확대 · {activeTab.label}
             </p>
           </motion.div>
         </AnimatePresence>

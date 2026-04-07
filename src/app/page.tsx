@@ -16,6 +16,9 @@ import FloorPlanSection from "@/components/sections/FloorPlanSection";
 import GallerySection from "@/components/sections/GallerySection";
 import LocationSection from "@/components/sections/LocationSection";
 import EnvSection from "@/components/sections/EnvSection";
+import MarketSection from "@/components/sections/MarketSection";
+import DevEnvSection from "@/components/sections/DevEnvSection";
+import SellingSection from "@/components/sections/SellingSection";
 import PremiumSection from "@/components/sections/PremiumSection";
 import RegistrationSection from "@/components/sections/RegistrationSection";
 
@@ -53,6 +56,9 @@ export default function Home() {
         />
         <GallerySection />
         <EnvSection />
+        <MarketSection />
+        <DevEnvSection />
+        <SellingSection />
         <LocationSection />
         <PremiumSection />
         <RegistrationSection />

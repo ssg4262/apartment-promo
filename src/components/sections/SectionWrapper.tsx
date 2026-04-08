@@ -40,7 +40,7 @@ export default function SectionWrapper({
               </span>
             )}
             {title && (
-              <h2 className={cn("heading-display text-3xl md:text-4xl lg:text-[2.75rem]", dark ? "text-white" : "text-neutral-900 dark:text-white")}>
+              <h2 className={cn("heading-display text-4xl md:text-5xl lg:text-6xl", dark ? "text-white" : "text-neutral-900 dark:text-white")}>
                 {title}
               </h2>
             )}

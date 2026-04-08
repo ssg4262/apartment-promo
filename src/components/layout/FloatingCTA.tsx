@@ -24,7 +24,7 @@ export default function FloatingCTA() {
           >
             <a
               href={`tel:${PROJECT.phone}`}
-              className="flex items-center gap-2 bg-neutral-900 px-5 py-3 text-[10px] font-medium uppercase tracking-[0.12em] text-white shadow-2xl transition hover:bg-black"
+              className="flex items-center gap-2 bg-cta-phone px-5 py-3 text-[10px] font-medium uppercase tracking-[0.12em] text-white shadow-2xl transition hover:bg-cta-phone-dark"
             >
               <Phone size={13} strokeWidth={2} />
               전화상담
@@ -51,7 +51,7 @@ export default function FloatingCTA() {
           >
             <a
               href={`tel:${PROJECT.phone}`}
-              className="flex flex-1 items-center justify-center gap-2 bg-neutral-900 py-4 text-xs font-semibold text-white transition active:bg-black"
+              className="flex flex-1 items-center justify-center gap-2 bg-cta-phone py-4 text-xs font-semibold text-white transition active:bg-cta-phone-dark"
             >
               <Phone size={15} strokeWidth={2} />
               전화상담

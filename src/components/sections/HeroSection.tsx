@@ -134,9 +134,9 @@ export default function HeroSection() {
                   </button>
                   <a
                     href={`tel:${PROJECT.phone}`}
-                    className="flex items-center gap-2 border border-white/40 bg-white/10 backdrop-blur-sm px-8 py-4 text-xs font-medium tracking-[0.12em] text-white transition-all hover:bg-white/20 hover:border-white/60"
+                    className="flex items-center gap-2 bg-cta-phone px-8 py-4 text-xs font-semibold tracking-[0.12em] text-white shadow-lg shadow-cta-phone/30 transition-all hover:bg-cta-phone-dark"
                   >
-                    <Phone size={14} strokeWidth={1.5} />
+                    <Phone size={14} strokeWidth={2} />
                     {PROJECT.phone}
                   </a>
                 </motion.div>

@@ -23,7 +23,7 @@ export default function Header() {
   useEffect(() => setMounted(true), []);
 
   const isScrolled = scrollY > 80;
-  const isHidden = direction === "down" && scrollY > 400;
+  const isHidden = false;
   const isOverHero = scrollY < (typeof window !== "undefined" ? window.innerHeight - 100 : 600);
 
   const handleNav = (id: string) => {
@@ -55,13 +55,13 @@ export default function Header() {
                 key={item.id}
                 onClick={() => handleNav(item.id)}
                 className={cn(
-                  "relative text-[11px] uppercase tracking-[0.1em] transition-colors",
+                  "relative text-[13px] font-semibold tracking-[0.05em] transition-colors",
                   isScrolled || !isOverHero
-                    ? "text-neutral-400 hover:text-black"
-                    : "text-white/50 hover:text-white",
+                    ? "text-neutral-500 hover:text-black"
+                    : "text-white/60 hover:text-white",
                   activeSection === item.id && (isScrolled || !isOverHero
-                    ? "font-semibold text-accent"
-                    : "text-white")
+                    ? "!font-bold text-accent"
+                    : "!font-bold text-white")
                 )}
               >
                 {item.label}

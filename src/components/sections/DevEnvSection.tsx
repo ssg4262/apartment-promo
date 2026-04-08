@@ -8,6 +8,7 @@ import RevealOnScroll from "@/components/common/RevealOnScroll";
 import ImageZoomModal from "@/components/common/ImageZoomModal";
 
 const ITEMS = [
+  { id: "selling-point", label: "셀링포인트", image: "/images/devenv/selling-point.jpg" },
   { id: "market-21", label: "분양/입주현황", image: "/images/market/market-21.jpg" },
   { id: "dev-28", label: "상방공원", image: "/images/devenv/devenv-28.jpg" },
 ];

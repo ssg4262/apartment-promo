@@ -59,7 +59,7 @@ export default function MobileDrawer({ isOpen, onClose, onNavClick }: MobileDraw
             <div className="mt-auto p-5">
               <a
                 href={`tel:${PROJECT.phone}`}
-                className="flex items-center justify-center gap-2 bg-black py-3.5 text-[11px] font-medium uppercase tracking-[0.1em] text-white dark:bg-white dark:text-black"
+                className="flex items-center justify-center gap-2 bg-cta-phone py-3.5 text-[11px] font-medium uppercase tracking-[0.1em] text-white transition hover:bg-cta-phone-dark"
               >
                 <Phone size={14} strokeWidth={1.5} />
                 {PROJECT.phone}

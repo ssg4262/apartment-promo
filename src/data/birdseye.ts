@@ -2,6 +2,12 @@ import type { BirdEyeTab } from "@/types";
 
 export const BIRDSEYE_TABS: BirdEyeTab[] = [
   {
+    id: "perspective",
+    label: "조감도",
+    image: "/images/overview/perspective.jpg",
+    description: "단지 조감도 (CG)",
+  },
+  {
     id: "night",
     label: "투시도",
     image: "/images/overview/birdseye-night.jpg",
@@ -12,12 +18,6 @@ export const BIRDSEYE_TABS: BirdEyeTab[] = [
     label: "단지배치도",
     image: "/images/overview/siteplan.jpg",
     description: "동별 배치 및 타입 구성",
-  },
-  {
-    id: "siteplan-3d",
-    label: "입체배치도",
-    image: "/images/overview/siteplan-3d.jpg",
-    description: "동간 거리 및 입체 배치",
   },
   {
     id: "unit-layout",

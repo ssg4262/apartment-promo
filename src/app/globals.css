@@ -9,6 +9,8 @@
   --color-accent: #B87348;
   --color-accent-light: #C9885E;
   --color-accent-dark: #9A5F3A;
+  --color-cta-phone: #B5423A;
+  --color-cta-phone-dark: #9A3730;
   --color-surface: #f7f7f7;
   --color-surface-dark: #111111;
   --color-muted: #666666;
@@ -20,6 +22,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 18px;
 }
 
 body {
@@ -45,7 +48,7 @@ body {
 }
 
 .label-caps {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;

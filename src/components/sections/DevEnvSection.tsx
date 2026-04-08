@@ -25,7 +25,7 @@ export default function DevEnvSection() {
   return (
     <SectionWrapper id="devenv" title="개발환경" subtitle="Development" className="bg-neutral-50">
       <RevealOnScroll>
-        <div className="mb-10 flex flex-wrap gap-x-6 gap-y-2 border-b border-neutral-200">
+        <div className="mb-10 flex gap-6 overflow-x-auto border-b border-neutral-200 scrollbar-hide">
           {TABS.map((tab) => (
             <button
               key={tab.id}

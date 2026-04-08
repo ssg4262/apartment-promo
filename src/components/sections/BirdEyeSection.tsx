@@ -22,7 +22,7 @@ export default function BirdEyeSection() {
       className="bg-neutral-50 dark:bg-[#0f0f0f]"
     >
       <RevealOnScroll>
-        <div className="mb-12 flex gap-8 border-b border-neutral-200 dark:border-neutral-800">
+        <div className="mb-12 flex gap-6 overflow-x-auto border-b border-neutral-200 dark:border-neutral-800 scrollbar-hide">
           {BIRDSEYE_TABS.map((tab) => (
             <button
               key={tab.id}

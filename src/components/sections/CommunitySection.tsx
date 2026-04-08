@@ -21,7 +21,7 @@ export default function CommunitySection() {
   return (
     <SectionWrapper id="community" title="주민공동시설" subtitle="Community Facilities">
       <RevealOnScroll>
-        <div className="mb-10 flex gap-8 border-b border-neutral-200">
+        <div className="mb-10 flex gap-6 overflow-x-auto border-b border-neutral-200 scrollbar-hide">
           {TABS.map((tab) => (
             <button
               key={tab.id}

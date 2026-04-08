@@ -35,7 +35,7 @@ export default function OverviewSection() {
 
       {/* Tabs */}
       <RevealOnScroll>
-        <div className="mb-10 flex gap-8 border-b border-neutral-200 dark:border-neutral-800">
+        <div className="mb-10 flex gap-6 overflow-x-auto border-b border-neutral-200 dark:border-neutral-800 scrollbar-hide">
           {[
             { id: "overview" as const, label: "사업개요" },
             { id: "units" as const, label: "세대정보" },

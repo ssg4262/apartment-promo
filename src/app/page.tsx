@@ -14,13 +14,9 @@ import DividerSection from "@/components/sections/DividerSection";
 import BirdEyeSection from "@/components/sections/BirdEyeSection";
 import CommunitySection from "@/components/sections/CommunitySection";
 import FloorPlanSection from "@/components/sections/FloorPlanSection";
-import GallerySection from "@/components/sections/GallerySection";
-import LocationSection from "@/components/sections/LocationSection";
 import EnvSection from "@/components/sections/EnvSection";
 import MarketSection from "@/components/sections/MarketSection";
 import DevEnvSection from "@/components/sections/DevEnvSection";
-import SellingSection from "@/components/sections/SellingSection";
-import PremiumSection from "@/components/sections/PremiumSection";
 import RegistrationSection from "@/components/sections/RegistrationSection";
 
 export default function Home() {
@@ -56,13 +52,9 @@ export default function Home() {
           quote="당신이 꿈꾸던 공간, 그 이상의 품격"
           author="Hoban Summit"
         />
-        <GallerySection />
         <EnvSection />
         <MarketSection />
         <DevEnvSection />
-        <SellingSection />
-        <LocationSection />
-        <PremiumSection />
         <RegistrationSection />
       </main>
       <Footer />

@@ -2,14 +2,17 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Maximize2 } from "lucide-react";
 import { cn, getImagePath, convertToPyeong } from "@/lib/utils";
 import { UNIT_TYPES } from "@/data/unit-types";
 import SectionWrapper from "./SectionWrapper";
 import RevealOnScroll from "@/components/common/RevealOnScroll";
+import ImageZoomModal from "@/components/common/ImageZoomModal";
 
 export default function FloorPlanSection() {
   const [selectedType, setSelectedType] = useState(UNIT_TYPES[0].id);
   const [usePyeong, setUsePyeong] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const unit = UNIT_TYPES.find((u) => u.id === selectedType)!;
 
   const fmt = (sqm: number) =>
@@ -19,7 +22,7 @@ export default function FloorPlanSection() {
     <SectionWrapper id="floorplan" title="세대 안내" subtitle="Unit Types">
       {/* Type selector */}
       <RevealOnScroll>
-        <div className="mb-8 flex gap-px overflow-x-auto bg-neutral-200">
+        <div className="mb-8 flex gap-px overflow-x-auto bg-neutral-200 scrollbar-hide">
           {UNIT_TYPES.map((type) => (
             <button
               key={type.id}
@@ -47,13 +50,23 @@ export default function FloorPlanSection() {
           transition={{ duration: 0.25 }}
           className="flex flex-col gap-0 lg:flex-row lg:gap-12"
         >
-          {/* Floor plan image — full width on mobile */}
-          <div className="w-full bg-neutral-50 lg:flex-1">
+          {/* Floor plan image — edge-to-edge on mobile, clickable with zoom */}
+          <div
+            className="group relative w-full cursor-pointer overflow-hidden lg:flex-1"
+            onClick={() => setModalOpen(true)}
+          >
             <img
               src={getImagePath(unit.image)}
               alt={`${unit.name} 타입`}
-              className="h-auto w-full object-contain"
+              className="h-auto w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
             />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/5">
+              <Maximize2
+                size={28}
+                strokeWidth={1.5}
+                className="text-neutral-700 opacity-0 drop-shadow-sm transition group-hover:opacity-100"
+              />
+            </div>
           </div>
 
           {/* Info */}
@@ -70,14 +83,14 @@ export default function FloorPlanSection() {
             </div>
 
             {/* ㎡ / 평 toggle */}
-            <div className="mb-6 inline-flex rounded-sm border border-neutral-200 bg-neutral-50">
+            <div className="mb-6 flex items-center gap-2">
               <button
                 onClick={() => setUsePyeong(false)}
                 className={cn(
-                  "px-4 py-2 text-xs font-semibold transition-colors",
+                  "px-3 py-1.5 text-xs font-medium transition",
                   !usePyeong
                     ? "bg-neutral-900 text-white"
-                    : "text-neutral-400 hover:text-neutral-600"
+                    : "bg-neutral-100 text-neutral-400"
                 )}
               >
                 ㎡
@@ -85,10 +98,10 @@ export default function FloorPlanSection() {
               <button
                 onClick={() => setUsePyeong(true)}
                 className={cn(
-                  "px-4 py-2 text-xs font-semibold transition-colors",
+                  "px-3 py-1.5 text-xs font-medium transition",
                   usePyeong
                     ? "bg-neutral-900 text-white"
-                    : "text-neutral-400 hover:text-neutral-600"
+                    : "bg-neutral-100 text-neutral-400"
                 )}
               >
                 평
@@ -122,6 +135,12 @@ export default function FloorPlanSection() {
           </div>
         </motion.div>
       </AnimatePresence>
+      <ImageZoomModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        src={unit.image}
+        alt={`${unit.name} 타입`}
+      />
     </SectionWrapper>
   );
 }

@@ -26,7 +26,7 @@ export default function EnvSection() {
     <SectionWrapper id="environment" title="입지 분석" subtitle="Location Analysis">
       {/* Tabs */}
       <RevealOnScroll>
-        <div className="mb-10 flex gap-8 border-b border-neutral-200">
+        <div className="mb-10 flex gap-6 overflow-x-auto border-b border-neutral-200 scrollbar-hide">
           {TABS.map((tab) => (
             <button
               key={tab.id}

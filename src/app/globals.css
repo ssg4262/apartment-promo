@@ -74,3 +74,7 @@ body {
 @media (min-width: 1536px) {
   .section-padding { padding-left: 8rem; padding-right: 8rem; }
 }
+
+/* Hide scrollbar but keep scrollable */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }

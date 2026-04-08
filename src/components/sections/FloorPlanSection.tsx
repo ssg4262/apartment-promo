@@ -12,22 +12,23 @@ export default function FloorPlanSection() {
   const [usePyeong, setUsePyeong] = useState(false);
   const unit = UNIT_TYPES.find((u) => u.id === selectedType)!;
 
-  const fmt = (sqm: number) => usePyeong ? `${convertToPyeong(sqm)}평` : `${sqm}㎡`;
+  const fmt = (sqm: number) =>
+    usePyeong ? `${convertToPyeong(sqm)}평` : `${sqm}㎡`;
 
   return (
     <SectionWrapper id="floorplan" title="세대 안내" subtitle="Unit Types">
-      {/* Type selector - horizontal scroll */}
+      {/* Type selector */}
       <RevealOnScroll>
-        <div className="mb-12 flex gap-px overflow-x-auto bg-neutral-200 dark:bg-neutral-800">
+        <div className="mb-8 flex gap-px overflow-x-auto bg-neutral-200">
           {UNIT_TYPES.map((type) => (
             <button
               key={type.id}
               onClick={() => setSelectedType(type.id)}
               className={cn(
-                "shrink-0 px-6 py-3 text-sm transition-colors",
+                "shrink-0 flex-1 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap",
                 selectedType === type.id
-                  ? "bg-accent font-semibold text-white"
-                  : "bg-white text-neutral-500 hover:bg-neutral-50 dark:bg-[#0a0a0a] dark:hover:bg-neutral-900"
+                  ? "bg-accent text-white"
+                  : "bg-white text-neutral-500 hover:bg-neutral-50"
               )}
             >
               {type.name}
@@ -44,39 +45,39 @@ export default function FloorPlanSection() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="grid gap-12 lg:grid-cols-2"
+          className="flex flex-col gap-0 lg:flex-row lg:gap-12"
         >
-          {/* Floor plan */}
-          <div className="flex items-center justify-center bg-neutral-50 p-12 dark:bg-neutral-900/50">
+          {/* Floor plan image — full width on mobile */}
+          <div className="w-full bg-neutral-50 lg:flex-1">
             <img
               src={getImagePath(unit.image)}
               alt={`${unit.name} 타입`}
-              className="h-auto w-full max-w-md"
+              className="h-auto w-full object-contain"
             />
           </div>
 
           {/* Info */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center px-4 py-8 lg:w-[360px] lg:px-0 lg:py-0">
             {/* Header */}
-            <div className="mb-8">
-              <span className="label-caps text-neutral-500 dark:text-neutral-400">Type {unit.name}</span>
-              <h3 className="heading-display mt-2 text-3xl text-neutral-900 dark:text-white md:text-4xl">
+            <div className="mb-6">
+              <span className="label-caps text-neutral-500">Type {unit.name}</span>
+              <h3 className="heading-display mt-2 text-3xl text-neutral-900 md:text-4xl">
                 전용 {fmt(unit.exclusiveArea)}
               </h3>
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+              <p className="mt-1.5 text-sm text-neutral-500">
                 {unit.rooms}Room · {unit.baths}Bath · {unit.unitCount}세대
               </p>
             </div>
 
-            {/* Unit toggle */}
-            <div className="mb-6 flex items-center gap-2">
+            {/* ㎡ / 평 toggle */}
+            <div className="mb-6 inline-flex rounded-sm border border-neutral-200 bg-neutral-50">
               <button
                 onClick={() => setUsePyeong(false)}
                 className={cn(
-                  "px-3 py-1.5 text-xs font-medium transition",
+                  "px-4 py-2 text-xs font-semibold transition-colors",
                   !usePyeong
                     ? "bg-neutral-900 text-white"
-                    : "bg-neutral-100 text-neutral-400"
+                    : "text-neutral-400 hover:text-neutral-600"
                 )}
               >
                 ㎡
@@ -84,18 +85,18 @@ export default function FloorPlanSection() {
               <button
                 onClick={() => setUsePyeong(true)}
                 className={cn(
-                  "px-3 py-1.5 text-xs font-medium transition",
+                  "px-4 py-2 text-xs font-semibold transition-colors",
                   usePyeong
                     ? "bg-neutral-900 text-white"
-                    : "bg-neutral-100 text-neutral-400"
+                    : "text-neutral-400 hover:text-neutral-600"
                 )}
               >
                 평
               </button>
             </div>
 
-            {/* Specs */}
-            <div className="divide-y divide-neutral-100 border-y border-neutral-200 dark:divide-neutral-800 dark:border-neutral-800">
+            {/* Specs table */}
+            <div className="divide-y divide-neutral-100 border-y border-neutral-200">
               {[
                 { label: "전용면적", value: unit.exclusiveArea },
                 { label: "주거공용", value: unit.commonArea },
@@ -103,14 +104,19 @@ export default function FloorPlanSection() {
                 { label: "기타공용", value: unit.otherCommonArea },
                 { label: "계약면적", value: unit.contractArea },
               ].map((row) => (
-                <div key={row.label} className="flex items-center justify-between py-3.5">
-                  <span className="text-sm text-neutral-500 dark:text-neutral-400">{row.label}</span>
-                  <span className="text-sm font-medium text-neutral-900 dark:text-white">{fmt(row.value)}</span>
+                <div
+                  key={row.label}
+                  className="flex items-center justify-between py-3.5"
+                >
+                  <span className="text-sm text-neutral-500">{row.label}</span>
+                  <span className="text-sm font-semibold text-neutral-900">
+                    {fmt(row.value)}
+                  </span>
                 </div>
               ))}
             </div>
 
-            <p className="mt-6 text-[11px] text-neutral-300 dark:text-neutral-600">
+            <p className="mt-5 text-[11px] leading-relaxed text-neutral-300">
               ※ 상기 면적은 인허가 과정에서 다소 변경될 수 있습니다.
             </p>
           </div>

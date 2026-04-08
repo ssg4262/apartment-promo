@@ -10,7 +10,6 @@ import ImageZoomModal from "@/components/common/ImageZoomModal";
 
 const TABS = [
   { id: "market-20", label: "대구권시장",     image: "/images/market/market-20.jpg" },
-  { id: "market-21", label: "분양/입주현황",  image: "/images/market/market-21.jpg" },
   { id: "market-22", label: "분양예정사례",   image: "/images/market/market-22.jpg" },
   { id: "market-23", label: "지역별시세",     image: "/images/market/market-23.jpg" },
   { id: "market-24", label: "대입지구사전청약", image: "/images/market/market-24.jpg" },

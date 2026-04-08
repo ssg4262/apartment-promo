@@ -12,7 +12,6 @@ const SECTIONS = [
   { id: "community", label: "커뮤니티" },
   { id: "floorplan", label: "세대 안내" },
   { id: "environment", label: "입지분석" },
-  { id: "market", label: "시장환경" },
   { id: "devenv", label: "개발환경" },
   { id: "registration", label: "관심고객" },
 ];

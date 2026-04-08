@@ -34,7 +34,11 @@ export default function Footer() {
             <div className="flex flex-col gap-2 text-xs text-neutral-400">
               <span className="flex items-center gap-2">
                 <MapPin size={12} strokeWidth={1} />
-                {PROJECT.location}
+                현장 : {PROJECT.location}
+              </span>
+              <span className="flex items-center gap-2">
+                <MapPin size={12} strokeWidth={1} />
+                홍보관 : {PROJECT.showroom}
               </span>
               <span className="flex items-center gap-2">
                 <Phone size={12} strokeWidth={1} />

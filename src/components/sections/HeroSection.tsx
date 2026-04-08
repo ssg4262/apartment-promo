@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ArrowDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowDown, Phone } from "lucide-react";
 import { cn, getImagePath } from "@/lib/utils";
 import { PROJECT } from "@/data/project";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
@@ -134,8 +134,9 @@ export default function HeroSection() {
                   </button>
                   <a
                     href={`tel:${PROJECT.phone}`}
-                    className="border border-white/30 px-8 py-4 text-[11px] font-light uppercase tracking-[0.15em] text-white/70 transition-all hover:border-white/30 hover:text-white/70"
+                    className="flex items-center gap-2 border border-white/40 bg-white/10 backdrop-blur-sm px-8 py-4 text-xs font-medium tracking-[0.12em] text-white transition-all hover:bg-white/20 hover:border-white/60"
                   >
+                    <Phone size={14} strokeWidth={1.5} />
                     {PROJECT.phone}
                   </a>
                 </motion.div>

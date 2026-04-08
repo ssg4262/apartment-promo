@@ -6,6 +6,7 @@ export interface NavItem {
 export interface ProjectInfo {
   name: string;
   location: string;
+  showroom: string;
   developer: string;
   totalUnits: number;
   totalBuildings: number;

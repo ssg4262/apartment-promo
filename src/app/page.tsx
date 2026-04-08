@@ -15,7 +15,6 @@ import BirdEyeSection from "@/components/sections/BirdEyeSection";
 import CommunitySection from "@/components/sections/CommunitySection";
 import FloorPlanSection from "@/components/sections/FloorPlanSection";
 import EnvSection from "@/components/sections/EnvSection";
-import MarketSection from "@/components/sections/MarketSection";
 import DevEnvSection from "@/components/sections/DevEnvSection";
 import RegistrationSection from "@/components/sections/RegistrationSection";
 
@@ -53,7 +52,6 @@ export default function Home() {
           author="Hoban Summit"
         />
         <EnvSection />
-        <MarketSection />
         <DevEnvSection />
         <RegistrationSection />
       </main>

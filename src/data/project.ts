@@ -2,14 +2,15 @@ import type { ProjectInfo } from "@/types";
 
 export const PROJECT: ProjectInfo = {
   name: "호반써밋 경산 상방공원 1단지",
-  location: "경상북도 경산시 상방동 71-1번지 일원",
+  location: "경상북도 경산시 상방동 71-1 일원",
+  showroom: "대구광역시 수성구 사월동 367-3",
   developer: "호반건설(주)",
   totalUnits: 1004,
   totalBuildings: 8,
   maxFloors: 35,
   parkingSpaces: 1572,
   moveInDate: "2027년 12월 예정",
-  phone: "1800-6700",
+  phone: "010-4539-8505",
   siteArea: "51,163.0000㎡",
   buildingArea: "9,305.8665㎡",
   floorAreaRatio: "229.94%",
@@ -27,7 +28,8 @@ export const PROJECT_STATS = [
 
 export const PROJECT_OVERVIEW_TABLE = [
   { label: "사업명", value: "경산시 상방공원 민간공원조성 특례사업 호반써밋 1단지 공동주택 신축사업" },
-  { label: "대지위치", value: "경상북도 경산시 상방동 71-1번지 일원" },
+  { label: "현장", value: "경상북도 경산시 상방동 71-1 일원" },
+  { label: "홍보관", value: "대구광역시 수성구 사월동 367-3" },
   { label: "대지면적", value: "51,163.0000㎡ (15,476.81평)" },
   { label: "건축면적", value: "9,305.8665㎡ (2,815.02평)" },
   { label: "연면적", value: "176,751.1994㎡ (53,467.23평)" },

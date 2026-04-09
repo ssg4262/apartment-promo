@@ -55,7 +55,7 @@ export default function Header() {
                 key={item.id}
                 onClick={() => handleNav(item.id)}
                 className={cn(
-                  "relative text-[13px] font-semibold tracking-[0.05em] transition-colors",
+                  "relative text-[14px] font-semibold tracking-[0.05em] transition-colors",
                   isScrolled || !isOverHero
                     ? "text-neutral-500 hover:text-black"
                     : "text-white/60 hover:text-white",
@@ -74,9 +74,9 @@ export default function Header() {
             <a
               href={`tel:${PROJECT.phone}`}
               className={cn(
-                "hidden items-center gap-1.5 text-xs font-semibold tracking-wider transition sm:flex",
+                "hidden items-center gap-1.5 text-[14px] font-bold tracking-wider transition sm:flex",
                 isScrolled || !isOverHero
-                  ? "text-neutral-800 hover:text-accent"
+                  ? "text-accent hover:text-accent-dark"
                   : "text-white hover:text-accent-light"
               )}
             >

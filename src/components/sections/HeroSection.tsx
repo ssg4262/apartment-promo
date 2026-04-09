@@ -52,7 +52,7 @@ export default function HeroSection() {
   }, [emblaApi]);
 
   return (
-    <section id="hero" className="relative h-[100svh] bg-black overflow-hidden text-[16px]">
+    <section id="hero" className="relative h-[100svh] bg-black overflow-hidden text-[15px]">
       {/* Slide backgrounds */}
       <div ref={emblaRef} className="h-full overflow-hidden">
         <div className="flex h-full">

@@ -44,7 +44,7 @@ export default function OverviewSection() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
-                "relative pb-4 text-sm font-medium transition-colors",
+                "relative pb-4 text-[15px] font-medium transition-colors",
                 activeTab === tab.id
                   ? "text-neutral-900 dark:text-white"
                   : "text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300"

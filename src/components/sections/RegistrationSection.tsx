@@ -83,7 +83,7 @@ export default function RegistrationSection() {
           <span className="label-caps mb-4 block text-cta-phone">
             Registration
           </span>
-          <h2 className="heading-display text-4xl md:text-5xl lg:text-6xl text-cta-phone">
+          <h2 className="heading-display text-[35px] md:text-[45px] lg:text-[57px] text-cta-phone">
             관심고객 등록
           </h2>
           <p className="mt-5 text-base text-neutral-500 max-w-lg mx-auto leading-relaxed">
@@ -98,7 +98,7 @@ export default function RegistrationSection() {
 
             {/* Name */}
             <div className="mb-6">
-              <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.1em] text-neutral-500">
+              <label className="mb-2 block text-[13px] font-bold tracking-[0.05em] text-neutral-700">
                 이름 *
               </label>
               <input
@@ -115,7 +115,7 @@ export default function RegistrationSection() {
 
             {/* Phone */}
             <div className="mb-6">
-              <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.1em] text-neutral-500">
+              <label className="mb-2 block text-[13px] font-bold tracking-[0.05em] text-neutral-700">
                 연락처 *
               </label>
               <input
@@ -133,8 +133,8 @@ export default function RegistrationSection() {
 
             {/* Email */}
             <div className="mb-10">
-              <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.1em] text-neutral-500">
-                이메일 <span className="normal-case tracking-normal text-neutral-300">(선택)</span>
+              <label className="mb-2 block text-[13px] font-bold tracking-[0.05em] text-neutral-700">
+                이메일 <span className="normal-case tracking-normal font-normal text-neutral-400">(선택)</span>
               </label>
               <input
                 type="email"

@@ -27,7 +27,7 @@ export default function CommunitySection() {
               key={tab.id}
               onClick={() => setActive(tab.id)}
               className={cn(
-                "relative pb-4 text-sm transition-colors whitespace-nowrap",
+                "relative pb-4 text-[15px] transition-colors whitespace-nowrap",
                 active === tab.id
                   ? "font-medium text-neutral-900"
                   : "text-neutral-400 hover:text-neutral-600"

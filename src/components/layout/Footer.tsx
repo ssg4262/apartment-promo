@@ -40,10 +40,10 @@ export default function Footer() {
                 <MapPin size={12} strokeWidth={1} />
                 홍보관 : {PROJECT.showroom}
               </span>
-              <span className="flex items-center gap-2">
-                <Phone size={12} strokeWidth={1} />
-                <a href={`tel:${PROJECT.phone}`} className="transition hover:text-white">{PROJECT.phone}</a>
-              </span>
+              <a href={`tel:${PROJECT.phone}`} className="mt-2 flex items-center gap-2 text-sm font-bold text-accent transition hover:text-accent-light">
+                <Phone size={14} strokeWidth={2} />
+                {PROJECT.phone}
+              </a>
               <span className="mt-1">{PROJECT.developer}</span>
             </div>
           </div>

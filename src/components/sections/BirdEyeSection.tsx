@@ -28,7 +28,7 @@ export default function BirdEyeSection() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
-                "relative pb-4 text-sm transition-colors",
+                "relative pb-4 text-[15px] transition-colors",
                 activeTab === tab.id
                   ? "font-medium text-neutral-900 dark:text-white"
                   : "text-neutral-400 hover:text-neutral-600"

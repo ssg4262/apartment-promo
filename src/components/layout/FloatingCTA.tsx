@@ -20,21 +20,21 @@ export default function FloatingCTA() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-6 left-6 z-30 hidden md:flex flex-col gap-2"
+            className="fixed bottom-6 right-6 z-30 hidden md:flex flex-col gap-2"
           >
             <a
               href={`tel:${PROJECT.phone}`}
-              className="flex items-center gap-2 bg-cta-phone px-5 py-3 text-[10px] font-medium uppercase tracking-[0.12em] text-white shadow-2xl transition hover:bg-cta-phone-dark"
+              className="flex items-center gap-2 bg-cta-phone px-6 py-3.5 text-[12px] font-semibold tracking-[0.08em] text-white shadow-2xl transition hover:bg-cta-phone-dark rounded"
             >
-              <Phone size={13} strokeWidth={2} />
+              <Phone size={14} strokeWidth={2} />
               전화상담
             </a>
             <button
               onClick={() => scrollTo("registration")}
-              className="flex items-center gap-2 bg-accent px-5 py-3 text-[10px] font-medium uppercase tracking-[0.12em] text-white shadow-2xl transition hover:bg-accent-dark"
+              className="flex items-center gap-2 bg-accent px-6 py-3.5 text-[12px] font-semibold tracking-[0.08em] text-white shadow-2xl transition hover:bg-accent-dark rounded"
             >
               관심고객
-              <ArrowRight size={12} strokeWidth={1.5} />
+              <ArrowRight size={13} strokeWidth={1.5} />
             </button>
           </motion.div>
         )}

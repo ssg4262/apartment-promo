@@ -28,7 +28,7 @@ export default function FloorPlanSection() {
               key={type.id}
               onClick={() => setSelectedType(type.id)}
               className={cn(
-                "shrink-0 flex-1 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap",
+                "shrink-0 flex-1 px-4 py-3 text-[15px] font-medium transition-colors whitespace-nowrap",
                 selectedType === type.id
                   ? "bg-accent text-white"
                   : "bg-white text-neutral-500 hover:bg-neutral-50"

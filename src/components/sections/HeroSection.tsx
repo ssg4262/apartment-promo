@@ -104,7 +104,7 @@ export default function HeroSection() {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="heading-display mb-8 whitespace-pre-line text-white text-[clamp(2.8rem,7.5vw,7rem)]"
+                  className="heading-display mb-8 whitespace-pre-line text-white text-[clamp(2.4rem,6.5vw,6rem)]"
                 >
                   {SLIDES[selected].title}
                 </motion.h1>

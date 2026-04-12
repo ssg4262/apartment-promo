@@ -9,7 +9,7 @@ interface DividerSectionProps {
 
 export default function DividerSection({ quote, author }: DividerSectionProps) {
   return (
-    <div className="relative overflow-hidden bg-[#0a0a0a] py-24 md:py-32">
+    <div className="relative overflow-hidden bg-[#0a0a0a] py-16 md:py-32">
       {/* Decorative elements */}
       <div className="absolute left-[10%] top-1/2 h-px w-[25%] -translate-y-1/2 bg-gradient-to-r from-transparent to-white/5" />
       <div className="absolute right-[10%] top-1/2 h-px w-[25%] -translate-y-1/2 bg-gradient-to-l from-transparent to-white/5" />

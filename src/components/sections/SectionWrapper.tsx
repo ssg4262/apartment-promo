@@ -24,7 +24,7 @@ export default function SectionWrapper({
     <section
       id={id}
       className={cn(
-        "relative py-24 md:py-32",
+        "relative py-16 md:py-32",
         dark
           ? "bg-[#0a0a0a] text-white"
           : "bg-white dark:bg-[#0a0a0a] dark:text-white",
@@ -33,7 +33,7 @@ export default function SectionWrapper({
     >
       <div className="mx-auto max-w-7xl section-padding">
         {(title || subtitle) && (
-          <div className="mb-16 md:mb-20">
+          <div className="mb-10 md:mb-20">
             {subtitle && (
               <span className={cn("label-caps mb-4 block", dark ? "text-neutral-400" : "text-neutral-500 dark:text-neutral-400")}>
                 {subtitle}

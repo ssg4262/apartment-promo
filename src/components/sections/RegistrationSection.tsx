@@ -47,7 +47,7 @@ export default function RegistrationSection() {
 
   if (done) {
     return (
-      <section id="registration" className="relative py-24 md:py-32 bg-[#FBF6F3]">
+      <section id="registration" className="relative py-16 md:py-32 bg-[#FBF6F3]">
         <RevealOnScroll>
           <div className="mx-auto max-w-md py-16 text-center">
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-cta-phone/30 text-cta-phone">
@@ -72,14 +72,14 @@ export default function RegistrationSection() {
   return (
     <section
       id="registration"
-      className="relative py-24 md:py-32 bg-[#FBF6F3] overflow-hidden"
+      className="relative py-16 md:py-32 bg-[#FBF6F3] overflow-hidden"
     >
       {/* Subtle warm glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-cta-phone/5 blur-[150px] pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl section-padding">
         {/* Header */}
-        <div className="mb-16 md:mb-20 text-center">
+        <div className="mb-10 md:mb-20 text-center">
           <span className="label-caps mb-4 block text-cta-phone">
             Registration
           </span>

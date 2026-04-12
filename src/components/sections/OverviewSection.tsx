@@ -18,7 +18,7 @@ export default function OverviewSection() {
   return (
     <SectionWrapper id="overview" title="사업개요" subtitle="Overview">
       {/* Stats - minimal horizontal layout */}
-      <div className="mb-20 grid grid-cols-2 gap-px bg-neutral-200 md:grid-cols-4 dark:bg-neutral-800">
+      <div className="mb-12 md:mb-20 grid grid-cols-2 gap-px bg-neutral-200 md:grid-cols-4 dark:bg-neutral-800">
         {PROJECT_STATS.map((stat, i) => (
           <RevealOnScroll key={stat.label} delay={i * 0.08}>
             <div className="bg-white p-8 text-center dark:bg-[#0a0a0a]">

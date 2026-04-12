@@ -35,8 +35,23 @@ export default function RegistrationSection() {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
-      await new Promise((r) => setTimeout(r, 1500));
-      return { success: true };
+      const url = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+      if (!url) throw new Error("Google Sheet URL이 설정되지 않았습니다.");
+
+      const res = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          name: data.name,
+          phone: data.phone,
+          email: data.email || "",
+          marketingConsent: !!data.marketingConsent,
+        }),
+      });
+
+      if (!res.ok) throw new Error("등록에 실패했습니다.");
+      const result = await res.json();
+      if (result.result !== "success") throw new Error(result.message || "등록에 실패했습니다.");
+      return result;
     },
     onSuccess: () => { setDone(true); reset(); },
   });

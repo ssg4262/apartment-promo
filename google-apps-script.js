@@ -14,7 +14,7 @@
  * 2. [배포] → [배포 관리] → 연필 아이콘 → 새 버전으로 업데이트합니다.
  */
 
-var SPREADSHEET_ID = "1HPA3ArBpQNmMhaakg22zaKcgP_EjBGFsTISfRVirfLVcQkM3CL5H_Ef-";
+var SPREADSHEET_ID = "15H34WI3b9zoboSya2bs6OzYhdmlXd6KG-FNDxCxxOIw";
 
 function doPost(e) {
   var lock = LockService.getScriptLock();

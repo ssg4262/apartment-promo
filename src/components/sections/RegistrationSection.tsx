@@ -10,6 +10,9 @@ import { cn, formatKoreanPhone } from "@/lib/utils";
 import SectionWrapper from "./SectionWrapper";
 import RevealOnScroll from "@/components/common/RevealOnScroll";
 
+const GAS_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbxw7lRX8_N5Hom92xIfnanQkiNNIFhB8cZKX3IfSEPEticif_v2l-8Ki0xG8Eex_6Em/exec";
+
 const schema = z.object({
   name: z.string().min(2, "이름을 2자 이상 입력해주세요"),
   phone: z.string().regex(
@@ -35,16 +38,13 @@ export default function RegistrationSection() {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
-      const url = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
-      if (!url) throw new Error("Google Sheet URL이 설정되지 않았습니다.");
-
       const body = new globalThis.FormData();
       body.append("name", data.name);
       body.append("phone", data.phone);
       body.append("email", data.email || "");
       body.append("marketingConsent", data.marketingConsent ? "동의" : "미동의");
 
-      await fetch(url, {
+      await fetch(GAS_ENDPOINT, {
         method: "POST",
         mode: "no-cors",
         body,

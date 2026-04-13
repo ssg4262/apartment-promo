@@ -22,7 +22,7 @@ function doPost(e) {
   try {
     var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName("Sheet1") ||
                 SpreadsheetApp.openById(SPREADSHEET_ID).getSheets()[0];
-    var data = JSON.parse(e.postData.contents);
+    var p = e.parameter;
 
     // 헤더가 없으면 자동 생성
     if (sheet.getLastRow() === 0) {
@@ -31,10 +31,10 @@ function doPost(e) {
 
     sheet.appendRow([
       new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" }),
-      data.name || "",
-      data.phone || "",
-      data.email || "",
-      data.marketingConsent ? "동의" : "미동의",
+      p.name || "",
+      p.phone || "",
+      p.email || "",
+      p.marketingConsent || "미동의",
     ]);
 
     return ContentService.createTextOutput(

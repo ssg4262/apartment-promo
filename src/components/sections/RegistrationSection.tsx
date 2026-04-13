@@ -38,20 +38,17 @@ export default function RegistrationSection() {
       const url = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
       if (!url) throw new Error("Google Sheet URL이 설정되지 않았습니다.");
 
-      const res = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
-          name: data.name,
-          phone: data.phone,
-          email: data.email || "",
-          marketingConsent: !!data.marketingConsent,
-        }),
-      });
+      const body = new globalThis.FormData();
+      body.append("name", data.name);
+      body.append("phone", data.phone);
+      body.append("email", data.email || "");
+      body.append("marketingConsent", data.marketingConsent ? "동의" : "미동의");
 
-      if (!res.ok) throw new Error("등록에 실패했습니다.");
-      const result = await res.json();
-      if (result.result !== "success") throw new Error(result.message || "등록에 실패했습니다.");
-      return result;
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        body,
+      });
     },
     onSuccess: () => { setDone(true); reset(); },
   });

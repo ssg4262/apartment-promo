@@ -20,8 +20,11 @@ function doPost(e) {
   lock.tryLock(10000);
 
   try {
-    var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName("Sheet1") ||
-                SpreadsheetApp.openById(SPREADSHEET_ID).getSheets()[0];
+    var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    var sheet = ss.getSheets()[1]; // 2번째 시트
+    if (!sheet) {
+      sheet = ss.insertSheet("관심고객");
+    }
     var p = e.parameter;
 
     // 헤더가 없으면 자동 생성

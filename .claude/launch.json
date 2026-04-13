@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "apartment-promo",
-      "runtimeExecutable": "/bin/bash",
-      "runtimeArgs": ["/Users/mac/Desktop/승범/apartment-promo/dev.sh"],
-      "port": 3200
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "dev"],
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }

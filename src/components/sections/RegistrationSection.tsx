@@ -11,7 +11,7 @@ import SectionWrapper from "./SectionWrapper";
 import RevealOnScroll from "@/components/common/RevealOnScroll";
 
 const GAS_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbzRQzwNkfGWfQY0q2tGhMB1N672Y7UlGzSzf8sIIjGtSeDqlAsyDm14nMFCECwVyJ9D/exec";
+  "https://script.google.com/macros/s/AKfycbxw7lRX8_N5Hom92xIfnanQkiNNIFhB8cZKX3IfSEPEticif_v2l-8Ki0xG8Eex_6Em/exec";
 
 const schema = z.object({
   name: z.string().min(2, "이름을 2자 이상 입력해주세요"),
@@ -43,6 +43,7 @@ export default function RegistrationSection() {
       body.append("phone", data.phone);
       body.append("email", data.email || "");
       body.append("marketingConsent", data.marketingConsent ? "동의" : "미동의");
+      body.append("project", "apartment-promo");
 
       await fetch(GAS_ENDPOINT, {
         method: "POST",

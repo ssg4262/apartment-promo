@@ -1,16 +1,14 @@
 /**
- * Google Apps Script — 관심고객 등록 시트 연동
+ * Google Apps Script — apartment-promo 관심고객 등록
  *
  * 스프레드시트 ID: 1HPA3ArBpQNmMhaakg22zaKcgP_EjBGFsTISfRVirfLVcQkM3CL5H_Ef-
+ * 대상: 2번째 시트
  *
  * 사용법:
  * 1. https://script.google.com 에서 새 프로젝트를 만듭니다.
  * 2. 이 파일의 내용을 붙여넣고 저장합니다.
- * 3. 스프레드시트 첫 번째 행(헤더)에 다음을 입력합니다:
- *    A1: 등록일시 | B1: 이름 | C1: 연락처 | D1: 이메일 | E1: 마케팅동의
- * 4. [배포] → [새 배포]를 클릭합니다.
- * 5. 유형: "웹 앱", 실행 주체: "나", 액세스 권한: "모든 사용자"로 설정합니다.
- * 6. 배포 후 생성된 URL을 .env.local의 NEXT_PUBLIC_GOOGLE_SHEET_URL에 설정합니다.
+ * 3. [배포] → [새 배포] → 웹 앱, 실행 주체: 나, 액세스: 모든 사용자
+ * 4. 배포 후 생성된 URL로 RegistrationSection.tsx의 GAS_ENDPOINT를 교체합니다.
  */
 
 var SPREADSHEET_ID = "1HPA3ArBpQNmMhaakg22zaKcgP_EjBGFsTISfRVirfLVcQkM3CL5H_Ef-";
@@ -22,9 +20,11 @@ function doPost(e) {
   try {
     var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
     var sheet = ss.getSheets()[1]; // 2번째 시트
+
     if (!sheet) {
-      sheet = ss.insertSheet("관심고객");
+      sheet = ss.insertSheet("apartment-promo");
     }
+
     var p = e.parameter;
 
     // 헤더가 없으면 자동 생성

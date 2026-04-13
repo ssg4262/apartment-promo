@@ -21,7 +21,6 @@ const schema = z.object({
   ),
   email: z.string().email("올바른 이메일을 입력해주세요").optional().or(z.literal("")),
   privacyConsent: z.literal(true, { message: "개인정보 수집에 동의해주세요" }),
-  marketingConsent: z.boolean().optional(),
   honeypot: z.string().max(0).optional(),
 });
 
@@ -33,7 +32,7 @@ export default function RegistrationSection() {
 
   const { register, handleSubmit, setValue, watch, formState: { errors }, reset } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { name: "", phone: "", email: "", privacyConsent: false as unknown as true, marketingConsent: false, honeypot: "" },
+    defaultValues: { name: "", phone: "", email: "", privacyConsent: false as unknown as true, honeypot: "" },
   });
 
   const mutation = useMutation({
@@ -42,7 +41,6 @@ export default function RegistrationSection() {
       body.append("name", data.name);
       body.append("phone", data.phone);
       body.append("email", data.email || "");
-      body.append("marketingConsent", data.marketingConsent ? "동의" : "미동의");
 
       await fetch(GAS_ENDPOINT, {
         method: "POST",
@@ -187,16 +185,6 @@ export default function RegistrationSection() {
                 </p>
               )}
 
-              <label className="mt-4 flex items-start gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="mt-0.5 h-4 w-4 accent-cta-phone"
-                  {...register("marketingConsent")}
-                />
-                <span className="text-sm text-neutral-500">
-                  <span className="font-medium">[선택]</span> 마케팅 정보 수신 동의
-                </span>
-              </label>
             </div>
 
             {/* Submit */}

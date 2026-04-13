@@ -1,17 +1,14 @@
 /**
- * Google Apps Script — 관심고객 등록 시트 연동 (멀티 프로젝트)
+ * Google Apps Script — apartment-promo 관심고객 등록
  *
  * 스프레드시트 ID: 1HPA3ArBpQNmMhaakg22zaKcgP_EjBGFsTISfRVirfLVcQkM3CL5H_Ef-
- *
- * - bunyang 프로젝트  → 1번 시트 (getSheets()[0])
- * - apartment-promo   → 2번 시트 (getSheets()[1])
- *
- * 프론트에서 FormData에 project 파라미터를 보내서 분기합니다.
- * project=apartment-promo → 2번 시트, 그 외 → 1번 시트
+ * 대상: 2번째 시트
  *
  * 사용법:
- * 1. 기존 GAS 코드에 이 내용을 덮어씌우고 저장합니다.
- * 2. [배포] → [배포 관리] → 연필 아이콘 → 새 버전으로 업데이트합니다.
+ * 1. https://script.google.com 에서 새 프로젝트를 만듭니다.
+ * 2. 이 파일의 내용을 붙여넣고 저장합니다.
+ * 3. [배포] → [새 배포] → 웹 앱, 실행 주체: 나, 액세스: 모든 사용자
+ * 4. 배포 후 생성된 URL로 RegistrationSection.tsx의 GAS_ENDPOINT를 교체합니다.
  */
 
 var SPREADSHEET_ID = "1HPA3ArBpQNmMhaakg22zaKcgP_EjBGFsTISfRVirfLVcQkM3CL5H_Ef-";
@@ -22,15 +19,13 @@ function doPost(e) {
 
   try {
     var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    var p = e.parameter;
-
-    // project 파라미터로 시트 분기
-    var sheetIndex = (p.project === "apartment-promo") ? 1 : 0;
-    var sheet = ss.getSheets()[sheetIndex];
+    var sheet = ss.getSheets()[1]; // 2번째 시트
 
     if (!sheet) {
-      sheet = ss.insertSheet(sheetIndex === 1 ? "apartment-promo" : "bunyang");
+      sheet = ss.insertSheet("apartment-promo");
     }
+
+    var p = e.parameter;
 
     // 헤더가 없으면 자동 생성
     if (sheet.getLastRow() === 0) {

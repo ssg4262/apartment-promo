@@ -128,13 +128,13 @@ export default function HeroSection() {
                 >
                   <button
                     onClick={() => scrollTo("registration")}
-                    className="bg-accent px-8 py-4 text-[11px] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-accent-dark"
+                    className="bg-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-accent-dark"
                   >
                     관심고객 등록
                   </button>
                   <a
                     href={`tel:${PROJECT.phone}`}
-                    className="flex items-center gap-2 bg-cta-phone px-8 py-4 text-xs font-semibold tracking-[0.12em] text-white shadow-lg shadow-cta-phone/30 transition-all hover:bg-cta-phone-dark"
+                    className="flex items-center gap-2 bg-cta-phone px-8 py-4 text-sm font-semibold tracking-[0.12em] text-white shadow-lg shadow-cta-phone/30 transition-all hover:bg-cta-phone-dark"
                   >
                     <Phone size={14} strokeWidth={2} />
                     {PROJECT.phone}

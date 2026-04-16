@@ -74,7 +74,8 @@ export default function Header() {
             <a
               href={`tel:${PROJECT.phone}`}
               className={cn(
-                "hidden items-center gap-1.5 text-[14px] font-bold tracking-wider transition sm:flex",
+                "hidden items-center gap-1.5 text-[16px] font-bold tracking-wider transition sm:flex",
+                "hidden items-center gap-1.5 text-[16px] font-bold tracking-wider transition sm:flex",
                 isScrolled || !isOverHero
                   ? "text-accent hover:text-accent-dark"
                   : "text-white hover:text-accent-light"

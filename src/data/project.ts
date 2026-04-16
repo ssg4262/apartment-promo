@@ -10,7 +10,7 @@ export const PROJECT: ProjectInfo = {
   maxFloors: 35,
   parkingSpaces: 1572,
   moveInDate: "2027년 12월 예정",
-  phone: "010-4539-8505",
+  phone: "1866-2011",
   siteArea: "51,163.0000㎡",
   buildingArea: "9,305.8665㎡",
   floorAreaRatio: "229.94%",

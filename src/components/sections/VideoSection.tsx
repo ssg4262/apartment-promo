@@ -42,7 +42,7 @@ export default function VideoSection({
               {subtitle}
             </span>
             <h2 className={cn(
-              "heading-display text-2xl md:text-3xl lg:text-4xl",
+              "heading-display text-xl md:text-3xl lg:text-4xl",
               dark ? "text-white" : "text-neutral-900"
             )}>
               {title}

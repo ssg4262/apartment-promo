@@ -52,7 +52,7 @@ export default function FloorPlanSection() {
         >
           {/* Floor plan image — edge-to-edge on mobile, clickable with zoom */}
           <div
-            className="group relative w-full cursor-pointer overflow-hidden lg:flex-1"
+            className="group relative -mx-5 w-auto cursor-pointer overflow-hidden md:mx-0 md:w-full lg:flex-1"
             onClick={() => setModalOpen(true)}
           >
             <img

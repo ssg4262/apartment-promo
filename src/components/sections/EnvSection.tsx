@@ -58,7 +58,7 @@ export default function EnvSection() {
             transition={{ duration: 0.25 }}
           >
             <div
-              className="group relative cursor-pointer overflow-hidden rounded-sm shadow-md"
+              className="group relative -mx-5 cursor-pointer overflow-hidden shadow-md md:mx-0 md:rounded-sm"
               onClick={() => setModalOpen(true)}
             >
               <div className="aspect-[16/9] bg-neutral-100">

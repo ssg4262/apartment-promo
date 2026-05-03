@@ -34,7 +34,7 @@ function doPost(e) {
 
     // 헤더가 없으면 자동 생성
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(["등록일시", "이름", "연락처", "이메일", "마케팅동의"]);
+      sheet.appendRow(["등록일시", "이름", "연락처", "이메일"]);
     }
 
     sheet.appendRow([
@@ -42,7 +42,6 @@ function doPost(e) {
       p.name || "",
       p.phone || "",
       p.email || "",
-      p.marketingConsent || "미동의",
     ]);
 
     return ContentService.createTextOutput(

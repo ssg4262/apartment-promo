@@ -1,6 +1,7 @@
 "use client";
 
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { getImagePath } from "@/lib/utils";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingCTA from "@/components/layout/FloatingCTA";
@@ -27,6 +28,19 @@ export default function Home() {
       <main>
         <HeroSection />
         <MarqueeSection />
+        {/* Promo benefit banner */}
+        <section className="bg-white">
+          <a
+            href="#registration"
+            className="mx-auto block w-full max-w-md py-10 md:max-w-lg md:py-16"
+          >
+            <img
+              src={getImagePath("/images/promo/benefit.png")}
+              alt="파격 분양혜택 - 계약금 500만원, 중도금 무이자, 발코니 확장 무상, 안심보장제 시행"
+              className="block h-auto w-full"
+            />
+          </a>
+        </section>
         <VideoSection
           id="intro-video"
           title="호반써밋, 경산의 새로운 랜드마크"

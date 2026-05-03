@@ -53,7 +53,7 @@ export default function BirdEyeSection() {
             transition={{ duration: 0.25 }}
           >
             <div
-              className="group relative cursor-pointer overflow-hidden"
+              className="group relative -mx-5 cursor-pointer overflow-hidden md:mx-0"
               onClick={() => setModalOpen(true)}
             >
               <div className="aspect-[16/9] bg-neutral-100 dark:bg-neutral-900">
